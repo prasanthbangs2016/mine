@@ -1,0 +1,10 @@
+example
+==========
+coffee:
+#tab space below for make
+	@echo Making coffee
+tea:
+	@echo Making Tea
+#execution
+#make coffee
+#make tea

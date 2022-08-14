@@ -1,0 +1,47 @@
+Inputs
+======
+-Most of the times we cannot hardcode the values and at the same time we cannot dynamically determine the values
+using command substitution.
+- so we need input from the user and based on input,we proceed with the script.
+
+-input in shell scripting can be taken into 2 ways
+
+1-During execution:
+ a- by using read command
+
+ ex:
+ #/bin/bash
+ read -p 'Enter your name: ' name
+ echo Your name = $name
+
+ -this approach will be taken if for sure we know that script can be executed manually
+ -otherwise this approach will not work for automation.it breaks the automation and ends with failures.
+
+
+
+
+
+2-Before execution
+Before executing the script we can provide the inputs and those inputs can be loaded by script.
+those values will be loaded by special variables inside the script
+this approach will be taken by most of the commands in the shell.
+special variables are $0-$n,$*,$@,$#
+
+$0=script name
+$1 -$n - arguments passed in a order(n: meaning(1,2,3,4)
+$*,$@ - all arguments
+$# - no of arguments
+
+
+ ex:
+#/bin/bash
+echo $0
+echo $1
+echo $*
+echo $#
+
+bash ppk.sh
+bash ppk.sh 100
+bash ppk 100 200
+
+    

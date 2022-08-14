@@ -1,0 +1,52 @@
+#!/bin/bash
+echo hello world..!
+
+#echo to print multiple lines
+#\n : is new line sequence
+#syntax: echo -e "line1\nline2"
+ 
+echo -e "Hello,\nDevops Course"
+echo -e "\nHello,\nDevops Course"
+
+#print a paragraph
+#\t : is to print a tab space
+echo -e "\tAce stock market investor Rakesh Jhunjhunwala died this morning at a Mumbai hospital.
+         He was also the co-founder of Akasa Air, India's newest airline which began commercial 
+         operations last week"
+
+#print colour
+#syntax: echo -e "\e[COLOURmMessage\e[0m"
+#colours        code
+
+#Red            31
+#Yellow         32
+#Green          33
+#blue           34
+#magenta        35
+#cyan           36
+
+echo -e "\e[31mHelloDevops\e[0m"
+echo -e "\e[32mHelloDevops\e[0m"
+echo -e "\e[33mHelloDevops\e[0m"
+echo -e "\e[34HelloDevops\e[0m"
+echo -e "\e[35mHelloDevops\e[0m"
+echo -e "\e[36mHelloDevops\e[0m"
+
+#multline comments
+<<comment
+ "Code" or "Comments"
+comment
+
+#!/bin/bash
+echo "Sample code"
+x=4
+if [[ $x -le 10 ]];then
+    echo "Less than 10"
+if
+
+<<com
+echo"This doesn't echo"
+
+echo"Even this doesn't"
+com
+echo "OK, this is echoing after <<com !"

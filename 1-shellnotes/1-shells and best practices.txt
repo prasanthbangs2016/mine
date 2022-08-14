@@ -1,0 +1,63 @@
+UNIX (at&T) -sh shell --- core shell
+IBM -ksh (shell)
+microsystems: csh (cshell)
+
+every shell has its own features
+
+Linux - Bash(they have acquired Unix and sh and named as bash)
+bash is default in all linix operating system.
+note: in linux we can install whatever the shell we wish to.
+
+
+Rules
+=======
+Keep code dry (reusable)
+    - think always how u can reuse the code
+Try to make the code best design of code structure for your requirement.
+
+
+cd /etc/init.d/
+head netconsole
+head network
+
+Note : Everything is file in Linux
+
+type ls ---> tells command location
+type sh
+type bash
+
+Note: using shebang line interpretor the defined shell commands gets executed.
+
+Questions
+===========
+can we use multiple shebangs..?
+No, we can use only 1 for shell script and it has to be at 1st line
+
+permissions to the script is executable..?
+chmod u+x 1.sh
+
+Intellisense..?
+code completion,this is possible with plugins.(ex: yaml and terraform)
+
+where do we need shell scritping in realtime..?
+if we're dealing with operating system then we need
+
+does shellscript variables have any datatype?
+defaultno,everything is string, based on data we have to take care.
+
+i want to know how much time script has taken to execute,how...?
+time bash ppk.sh
+
+how do u make shell scripting variable as a persistant value..?
+using readonly
+
+how do use local variables in shellscript?
+set as environmental variable using export 
+or
+sudo -E bash ppk.sh
+
+
+
+
+
+

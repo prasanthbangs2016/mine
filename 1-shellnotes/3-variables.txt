@@ -1,0 +1,97 @@
+if you assign name to set of data that is called as variable.
+
+in shell we declare the variable as 
+VAR=DATA
+
+in bash we access the variable as
+$VAR or ${VAR}
+
+ex:
+===
+a=10
+echo $a
+echo ${a}
+
+examples
+===========
+#!/bin/bash
+COURSE=Devops
+
+echo course name = $COURSE
+
+hard coded data
+=============
+DATE=2021-08-14
+echo Today's date is $DATE
+
+dynamic data
+============
+#this is called command substitution
+DATE=$(date +%F)
+echo Today's date is $DATE
+
+#how many/list users logged into system
+NO_OF_USERS=$(who | wc -l)
+echo no of users logged in currently = $NO_OF_USERS
+
+#arithmetic expression
+======================
+ADD=$((2+3+4))
+echo addtion is = $ADD
+
+
+VAR=$(command),this command substitution,command output will to VAR variable
+VAR=$(expression),this is arithmetic substitution,expression output goes to variable
+ex: $(2+3)
+
+Variable properties
+===================
+1-Readwrite: Here it always override a variable
+ex:
+a=10
+a=20
+this means overriding
+echo $a
+
+2-Readonly : persistant Variable
+a=100
+readonly a
+a=200
+
+3-scalar: at any point of time we can store only one value
+
+
+4-array: multiple values
+b=(10,20)
+echo ${b[0]}
+echo ${b[1]}
+
+5-local:
+
+a=100
+echo $x
+
+examples
+===========
+#!/bin/bash
+echo $a
+
+bash ppk.sh
+o/p: this script process is different hence it is not resulted and that is local to command line
+
+6-environmental variables
+
+export a=100
+
+examples
+===========
+#!/bin/bash
+echo $a
+
+o/p: this will be printed as we have used environmental variable and script inherits when used.
+
+
+
+
+
+

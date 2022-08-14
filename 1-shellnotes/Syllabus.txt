@@ -1,0 +1,10 @@
+Shebang and comments
+printing
+variables
+inputs
+redirections and exit status
+funtions
+conditions
+Loops
+
+
