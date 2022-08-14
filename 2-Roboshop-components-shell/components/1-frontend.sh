@@ -13,7 +13,8 @@ yum install nginx -y &>>/tmp/roboshop.log
 #checking exit status of previously executed command using function
 STAT $?
 
-HEAD "Start nginx"
+#HEAD "Start nginx"
+HEAD "Start nginx\t"
 systemctl enable nginx &>>/tmp/roboshop.log
 systemctl start nginx  &>>/tmp/roboshop.log
 STAT $?
