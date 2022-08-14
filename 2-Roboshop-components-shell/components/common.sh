@@ -7,6 +7,7 @@ HEAD() {
 
 STAT() {
     #first argument of function is =0
+    #$1 Installing nginx and etc
     if [ $1 -eq 0 ]; then
       echo -e "\e[1;31m done\e[0m"
     else
