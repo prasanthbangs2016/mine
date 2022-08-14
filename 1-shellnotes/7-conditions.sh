@@ -97,7 +97,7 @@ else
   echo "Hey, File $filename not exist"
 fi
 
-#Notes: always user quotes for expressions to avoid errors.
+#Notes: always user quotes for expressions to avoid errors.s
 
 
 
