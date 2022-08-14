@@ -23,6 +23,17 @@ HEAD "Download frontend from github"
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>/tmp/roboshop.log
 STAT $?
 
+HEAD "Delete old Nginx HTML Doc"
+rm -rf /usr/share/nginx/html
+STAT $?
+
+HEAD "Unzip frontend code content"
+#unzipping the files from /tmp/frontend.zip to /usr/share/nginx/html 
+unzip -d /usr/share/nginx/html /tmp/frontend.zip &>>/tmp/roboshop.log
+STAT $?
+
+#mv frontend-main/static/* .
+#mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
 
 
 
