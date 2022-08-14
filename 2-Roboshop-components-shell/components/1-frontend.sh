@@ -13,11 +13,6 @@ yum install nginx -y &>>/tmp/roboshop.log
 #checking exit status of previously executed command using function
 STAT $?
 
-#HEAD "Start nginx"
-HEAD "Start nginx\t\t"
-systemctl enable nginx &>>/tmp/roboshop.log
-systemctl start nginx  &>>/tmp/roboshop.log
-STAT $?
 
 HEAD "Download frontend from github"
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>/tmp/roboshop.log
@@ -34,6 +29,15 @@ mv /usr/share/nginx/html/frontend-main/* /usr/share/nginx/html/. &>>/tmp/robosho
 mv /usr/share/nginx/html/static/* /usr/share/nginx/html/. &>>/tmp/roboshop.log
 STAT $?
 
+HEAD "Update Nginx configuration"
+mv /usr/share/nginx/html/localhost.conf /etc/nginx/default.d/roboshop.conf
+STAT $?
+
+#HEAD "Start nginx"
+HEAD "Start nginx\t\t"
+systemctl enable nginx &>>/tmp/roboshop.log
+systemctl restart nginx  &>>/tmp/roboshop.log
+STAT $?
 
 
 
