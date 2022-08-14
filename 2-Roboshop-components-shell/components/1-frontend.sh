@@ -30,10 +30,11 @@ STAT $?
 HEAD "Unzip frontend code content"
 #unzipping the files from /tmp/frontend.zip to /usr/share/nginx/html 
 unzip -d /usr/share/nginx/html /tmp/frontend.zip &>>/tmp/roboshop.log
+mv /usr/share/nginx/html/frontend-main/* /usr/share/nginx/html/. &>>/tmp/roboshop.log
+mv /usr/share/nginx/html/static/* /usr/share/nginx/html/. &>>/tmp/roboshop.log
 STAT $?
 
-#mv frontend-main/static/* .
-#mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
+
 
 
 
