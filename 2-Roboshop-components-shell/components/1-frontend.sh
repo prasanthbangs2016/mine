@@ -3,7 +3,7 @@ source components/common.sh
 #removing log file for every time to have latest run log
 rm -rf /tmp/roboshop.log
 
-HEAD "Installing Nginx"
+HEAD "Installing Nginx\t"
 #echo -n "Installing NGINX   ..."
 yum install nginx -y &>>/tmp/roboshop.log
 #failure checking
@@ -14,7 +14,7 @@ yum install nginx -y &>>/tmp/roboshop.log
 STAT $?
 
 #HEAD "Start nginx"
-HEAD "Start nginx\t"
+HEAD "Start nginx\t\t"
 systemctl enable nginx &>>/tmp/roboshop.log
 systemctl start nginx  &>>/tmp/roboshop.log
 STAT $?
