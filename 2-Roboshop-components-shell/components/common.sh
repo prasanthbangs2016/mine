@@ -6,7 +6,6 @@ HEAD() {
 
 FAIL() {
 
-
 }
 
 SUCCESS() {
