@@ -31,5 +31,6 @@ cd /home/roboshop && unzip -o /tmp/catalogue.zip &>>/tmp/roboshop.log && mv cata
 STAT $?
 
 HEAD "Install NPM module"
-cd /home/roboshop/catalogue && npm install &>>/tmp/roboshop.log
+#--unsafe-perm : switching sudo is complex in shell scripting hence this
+cd /home/roboshop/catalogue && npm install --unsafe-perm &>>/tmp/roboshop.log
 STAT $?
