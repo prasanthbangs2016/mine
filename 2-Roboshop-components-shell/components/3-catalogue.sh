@@ -5,7 +5,7 @@ rm -rf /tmp/roboshop.log
 HEAD "Installing Nodejs\t"
 #yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
 #curl –sL https://rpm.nodesource.com/setup_10.x | sudo bash - &>>/tmp/roboshop.log
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/roboshop.log
 sudo yum install nodejs -y &>>/tmp/roboshop.log
 node --version
 npm --version
@@ -66,4 +66,4 @@ STAT $?
 #cat /var/log/messages
 # catalogue: {"level":"info","time":1660569501911,"pid":2557,"hostname":"ip-172-31-11-127.ec2.internal","msg":"MongoDB connected","v":1}
 
-
+#/etc/systemd/system/catalogue.service

@@ -47,5 +47,12 @@ fi
 #as output coming json format,whole output we're giving to "JQ" and that stops and takes us to cmdline
 echo -e "\e[31m\t\tOh,No ${COMPONENT} instance is not there creating the instance ${COMPONENT}\e[0m"
 aws ec2 run-instances --launch-template LaunchTemplateId=${LaunchTemplateId},Version=${Version} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" | jq
+#intentionally waiting as instance to be provisioned
+sleep 30
+
+#find ip address to add record in rout53
+PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1)
+sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${PRIVATE_IP}/" r53-record.json &>>/tmp/r53-record.json
+aws route53 change-resource-record-sets --hosted-zone-id Z06449313GT2L31RWE1JO --change-batch file:///tmp/r53-record.json
 
 
