@@ -45,6 +45,7 @@ fi
 
 #since with single quotes we cannot access the variable hence double quotes
 #as output coming json format,whole output we're giving to "JQ" and that stops and takes us to cmdline
+echo "Oh,No ${COMPONENT} instance is not there creating the instance"
 aws ec2 run-instances --launch-template LaunchTemplateId=${LaunchTemplateId},Version=${Version} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" | jq
 
 
