@@ -21,7 +21,7 @@ STAT $?
 #then restart the service
 # systemctl restart mongod
 HEAD "Search and replace from 127.0.0.1 to 0.0.0.0 /etc/mongod.conf"
-sed -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+sed -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Start mongodb\t\t\t"
