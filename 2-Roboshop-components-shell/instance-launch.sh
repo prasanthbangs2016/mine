@@ -27,6 +27,15 @@ echo -e "\e[32m\t\tValidating ${COMPONENT} instance is already there\e[0m"
 
 INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].State.Name | xargs -n1)
 
+DNS_UPDATE() {
+#find ip address to add record in rout53
+PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1)
+sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${PRIVATE_IP}/" record.json >/tmp/record.json
+aws route53 change-resource-record-sets --hosted-zone-id Z06386013LGCB19ECT5 --change-batch file:///tmp/record.json | jq
+#validation
+#add route53 full permission to aws cli user in iam
+}
+
 if [ "${INSTANCE_STATE}" = "runnung" ]; then
   echo -e "\e[33m${COMPONENT} instance is already exist\e[0m"
   #as instance running exit
@@ -49,10 +58,6 @@ echo -e "\e[31m\t\tOh,No ${COMPONENT} instance is not there creating the instanc
 aws ec2 run-instances --launch-template LaunchTemplateId=${LaunchTemplateId},Version=${Version} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" | jq
 #intentionally waiting as instance to be provisioned
 sleep 30
+DNS_UPDATE
 
-#find ip address to add record in rout53
-PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1)
-sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${PRIVATE_IP}/" r53-record.json &>>/tmp/r53-record.json
-aws route53 change-resource-record-sets --hosted-zone-id Z06386013LGCB19ECT5 --change-batch file:///tmp/r53-record.json
-#validation
-#add route53 full permission to aws cli user in iam
+
