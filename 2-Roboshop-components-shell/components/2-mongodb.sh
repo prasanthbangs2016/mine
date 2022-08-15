@@ -3,12 +3,7 @@ source components/common.sh
 rm -rf /tmp/roboshop.log
 
 HEAD "Setup mongodb yum repo files\t"
-echo '[mongodb-org-4.2]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
+curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>/tmp/rboshop.log
 STAT $?
 
 HEAD "Install mongodb\t\t\t"
@@ -39,6 +34,6 @@ STAT $?
 
 HEAD "Load mongo schema files\t\t"
 cd mongodb-main
-mongo < catalogue.js &>>/tmp/rboshop.log mongo < users.js &>>/tmp/rboshop.log
+mongo < catalogue.js &>>/tmp/rboshop.log && mongo < users.js &>>/tmp/rboshop.log
 STAT $?
 
