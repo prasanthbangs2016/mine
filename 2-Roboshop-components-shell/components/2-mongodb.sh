@@ -11,8 +11,8 @@ enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
 STAT $?
 
-HEAD "Install mongodb"
-yum install -y mongodb-org
+HEAD "Install mongodb\t\t"
+yum install -y mongodb-org &>>/tmp/rboshop.log
 STAT $?
 
 
@@ -24,7 +24,7 @@ HEAD "Search and replace from 127.0.0.1 to 0.0.0.0 /etc/mongod.conf"
 sed -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 STAT $?
 
-HEAD "Start mongodb"
+HEAD "Start mongodb\t\t\t"
 systemctl enable mongod &>>/tmp/rboshop.log
 systemctl restart mongod &>>/tmp/roboshop.log
 STAT $?
