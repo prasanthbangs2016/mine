@@ -26,7 +26,9 @@ if [ $? -eq 0 ]; then
   STAT $?
 else
   useradd roboshop &>>/tmp/roboshop.log
-STAT $?
+  STAT $?
+fi 
+
 
 HEAD "Download code from github"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>/tmp/roboshop.log
