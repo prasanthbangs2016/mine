@@ -16,7 +16,7 @@ fi
 LaunchTemplateId=lt-0b86176ba30da7a45
 Version=1
 
-echo "\t\tValidating ${COMPONENT} instance is already there"
+echo -e "\t\tValidating ${COMPONENT} instance is already there"
 #filter the instance by tag
 #also i want to tell whether instance is running/terminated/stopped as well
 #Reservations[] : telling its a list
@@ -45,7 +45,7 @@ fi
 
 #since with single quotes we cannot access the variable hence double quotes
 #as output coming json format,whole output we're giving to "JQ" and that stops and takes us to cmdline
-echo "\t\tOh,No ${COMPONENT} instance is not there creating the instance"
+echo -e "\t\tOh,No ${COMPONENT} instance is not there creating the instance"
 aws ec2 run-instances --launch-template LaunchTemplateId=${LaunchTemplateId},Version=${Version} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" | jq
 
 
