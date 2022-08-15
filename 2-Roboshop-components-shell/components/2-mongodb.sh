@@ -15,21 +15,28 @@ HEAD "Install mongodb"
 yum install -y mongodb-org
 STAT $?
 
-HEAD "Start mongodb"
-systemctl enable mongod &>>/tmp/rboshop.log
-systemctl start mongod &>>/tmp/roboshop.log
-STAT $?
 
 #Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
 #Config file: /etc/mongod.conf
 #then restart the service
 # systemctl restart mongod
+HEAD "Search and replace from 127.0.0.1 to 0.0.0.0 /etc/mongod.conf"
+sed -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+STAT $?
+
+HEAD "Start mongodb"
+systemctl enable mongod &>>/tmp/rboshop.log
+systemctl restart mongod &>>/tmp/roboshop.log
+STAT $?
 
 HEAD "Download mongodb from github"
-curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
+curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Unzip mongodb files and Load schema files"
-cd /tmp && unzip mongodb.zip &>>/tmp/rboshop.log && cd mongodb-main && mongo < catalogue.js &>>/tmp/rboshop.log mongo < users.js &>>/tmp/rboshop.log
+cd /tmp && unzip -o mongodb.zip &>>/tmp/rboshop.log 
+STAT $?
+cd mongodb-main
+mongo < catalogue.js &>>/tmp/rboshop.log mongo < users.js &>>/tmp/rboshop.log
 STAT $?
 

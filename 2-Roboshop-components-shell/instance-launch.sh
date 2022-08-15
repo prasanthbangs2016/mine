@@ -35,7 +35,7 @@ fi
 
 if [ "${INSTANCE_STATE}" = "stopped" ]; then
   echo -e "\t\e[32m${COMPONENT} instance is already exist and stopped..! start the instance\e[0m"
-  #as instance running exit
+  #as instance stopped exit
   exit 0
 fi
 
@@ -45,7 +45,7 @@ fi
 
 #since with single quotes we cannot access the variable hence double quotes
 #as output coming json format,whole output we're giving to "JQ" and that stops and takes us to cmdline
-echo -e "\e[31m\t\tOh,No ${COMPONENT} instance is not there creating the instance\e[0m"
+echo -e "\e[31m\t\tOh,No ${COMPONENT} instance is not there creating the instance ${COMPONENT}\e[0m"
 aws ec2 run-instances --launch-template LaunchTemplateId=${LaunchTemplateId},Version=${Version} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" | jq
 
 

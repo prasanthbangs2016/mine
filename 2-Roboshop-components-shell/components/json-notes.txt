@@ -1,0 +1,44 @@
+XML
+JSON
+YAML
+
+Key 	- value
+
+Key	- Multiple value(list)
+
+Key	- Key-value (Map/Dictionary/Hash)
+a key is going to have again key and value
+
+
+Json
+=====
+{
+#Key and value
+ 
+ "fruit" : "apple",
+ "count" : 100,
+
+#Key and multiple values(list)
+ "type" " [ "red", "green" ],
+
+#Map/dic/hash
+"type_count": {
+   "red" : 60,
+   "green" : 40,
+  }
+
+}
+
+How to query
+============
+cat 1.json | jq
+cat 1.json | jq .fruit
+
+cat 1.json | jq .type
+
+cat 1.json | jq .type_count
+
+cat 1.json | jq .type_count.red
+
+
+

@@ -1,0 +1,5 @@
+echo 1 && echo 1
+if 1st command fail it wont go to second command
+
+echo 1 || echo 2
+if 1st command fails it will go to second command
