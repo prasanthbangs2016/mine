@@ -1,3 +1,7 @@
+#!/bin/bash
+source components/common.sh
+rm -rf /tmp/roboshop.log
+
 HEAD "Installing Nodejs"
 yum install nodejs make gcc-c++ -y &>>/tmp/rboshop.log
 STAT $?
