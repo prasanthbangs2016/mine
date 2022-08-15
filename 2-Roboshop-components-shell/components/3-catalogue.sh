@@ -35,10 +35,15 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
 STAT $?
 
 HEAD "Extract the downloaded code"
-cd /home/roboshop && unzip -o /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
+cd /home/roboshop && rm -rf catalogue-main && unzip -o /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
 STAT $?
 
 HEAD "Install NPM module"
 #--unsafe-perm : switching sudo is complex in shell scripting hence this
 cd /home/roboshop/catalogue && npm install --unsafe-perm &>>/tmp/roboshop.log
+STAT $?
+
+HEAD "Fix app permissions"
+#as we ran using sudo it will have root and its requires roboshop
+chown roboshop:roboshop /home/roboshop -R
 STAT $?
