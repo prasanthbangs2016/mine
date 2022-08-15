@@ -34,7 +34,7 @@ if [ "${INSTANCE_STATE}" = "runnung" ]; then
 fi
 
 if [ "${INSTANCE_STATE}" = "stopped" ]; then
-  echo "${COMPONENT} instance is already exist and stopped..!"
+  echo "${COMPONENT} instance is already exist and stopped..! start the instance"
   #as instance running exit
   exit 0
 fi
