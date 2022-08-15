@@ -20,7 +20,7 @@ STAT $?
 #Config file: /etc/mongod.conf
 #then restart the service
 # systemctl restart mongod
-HEAD "Search and replace from 127.0.0.1 to 0.0.0.0 /etc/mongod.conf"
+HEAD "Search and replace mongo config\t"
 sed -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>/tmp/roboshop.log
 STAT $?
 
@@ -33,7 +33,7 @@ HEAD "Download mongodb from github\t\t"
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Unzip mongodb files and Load schema files\t"
+HEAD "Unzip mongodb files and Load schema files"
 cd /tmp && unzip -o mongodb.zip &>>/tmp/rboshop.log 
 STAT $?
 cd mongodb-main
