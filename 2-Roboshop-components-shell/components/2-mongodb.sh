@@ -24,12 +24,12 @@ HEAD "Search and replace mongo config\t"
 sed -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Start mongodb\t\t\t\t"
+HEAD "Start mongodb\t\t\t"
 systemctl enable mongod &>>/tmp/rboshop.log
 systemctl restart mongod &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Download mongodb from github\t\t"
+HEAD "Download mongodb from github\t"
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>/tmp/roboshop.log
 STAT $?
 
@@ -37,7 +37,7 @@ HEAD "unzip mongofile\t\t\t"
 cd /tmp && unzip -o mongodb.zip &>>/tmp/rboshop.log 
 STAT $?
 
-HEAD "Load mongo schema files\t"
+HEAD "Load mongo schema files\t\t"
 cd mongodb-main
 mongo < catalogue.js &>>/tmp/rboshop.log mongo < users.js &>>/tmp/rboshop.log
 STAT $?
