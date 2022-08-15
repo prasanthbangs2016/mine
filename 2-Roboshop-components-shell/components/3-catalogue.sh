@@ -47,3 +47,17 @@ HEAD "Fix app permissions"
 #as we ran using sudo it will have root and its requires roboshop
 chown roboshop:roboshop /home/roboshop -R
 STAT $?
+
+#update the IP address of MONGODB Server in systemd.service file
+
+HEAD "Update mongodb server in catalogue"
+#sudo su -
+#cat /home/roboshop/catalogue/systemd.service
+sed -i -e 's/MONGO_DNSNAME/dev-mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service &>>/tmp/roboshop.log
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+STAT $?
+
+HEAD "Start catalogue service"
+systemctl daemon-reload && systemctl enable catalogue &>>/tmp/roboshop.log && systemctl restart catalogue &>>/tmp/roboshop.log
+STAT $?
+

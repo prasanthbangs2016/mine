@@ -57,6 +57,10 @@ or
 sudo -E bash ppk.sh
 
 
+can we able to switch to root user using scripting?
+yes but it is complex   
+su - <username> -c <commands>
+
 
 
 
