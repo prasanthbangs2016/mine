@@ -3,7 +3,7 @@
 	"Changes": [{
 		"Action": "UPSERT", 
 		"ResourceRecordSet": {
-			"Name": "COMPONENT.roboshop.internal",
+			"Name": "COMPONENT.roboshop.ppk",
 			"Type": "A",
 			"TTL": 300,
 			"ResourceRecords": [{

@@ -25,7 +25,7 @@ echo -e "\e[32m\t\tValidating ${COMPONENT} instance is already there\e[0m"
 
 #aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].State.Name
 
-INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].State.Name | xargs -n1)
+
 
 DNS_UPDATE() {
 #find ip address to add record in rout53
@@ -35,6 +35,8 @@ aws route53 change-resource-record-sets --hosted-zone-id Z06386013LGCB19ECT5 --c
 #validation
 #add route53 full permission to aws cli user in iam
 }
+
+INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].State.Name | xargs -n1)
 
 if [ "${INSTANCE_STATE}" = "runnung" ]; then
   echo -e "\e[33m${COMPONENT} instance is already exist\e[0m"
