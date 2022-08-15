@@ -2,10 +2,11 @@
 source components/common.sh
 #removing log file for every time to have latest run log
 rm -rf /tmp/roboshop.log
+set-hostname redis
 
 HEAD "setup redis repo"
 curl -L https://raw.githubusercontent.com/roboshop-devops-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>>/tmp/roboshop.log
-yum install redis-6.2.7 -y
+yum install redis-6.2.7 -y &>>/tmp/roboshop.log
 STAT $?
 
 <<comment
