@@ -2,7 +2,7 @@
 source components/common.sh
 rm -rf /tmp/roboshop.log
 
-HEAD "Setup mongodb yum repo files"
+HEAD "Setup mongodb yum repo files\t"
 echo '[mongodb-org-4.2]
 name=MongoDB Repository
 baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
@@ -11,7 +11,7 @@ enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
 STAT $?
 
-HEAD "Install mongodb\t\t"
+HEAD "Install mongodb\t\t\t"
 yum install -y mongodb-org &>>/tmp/rboshop.log
 STAT $?
 
@@ -24,16 +24,16 @@ HEAD "Search and replace from 127.0.0.1 to 0.0.0.0 /etc/mongod.conf"
 sed -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Start mongodb\t\t\t"
+HEAD "Start mongodb\t\t\t\t"
 systemctl enable mongod &>>/tmp/rboshop.log
 systemctl restart mongod &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Download mongodb from github"
+HEAD "Download mongodb from github\t\t"
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Unzip mongodb files and Load schema files"
+HEAD "Unzip mongodb files and Load schema files\t"
 cd /tmp && unzip -o mongodb.zip &>>/tmp/rboshop.log 
 STAT $?
 cd mongodb-main
