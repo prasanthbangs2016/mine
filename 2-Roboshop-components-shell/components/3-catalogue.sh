@@ -2,10 +2,11 @@
 source components/common.sh
 rm -rf /tmp/roboshop.log
 
-HEAD "Installing Nodejs"
+HEAD "Installing Nodejs\t"
 #yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
-curl –sL https://rpm.nodesource.com/setup_10.x | sudo bash - &>>/tmp/roboshop.log
-sudo yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
+#curl –sL https://rpm.nodesource.com/setup_10.x | sudo bash - &>>/tmp/roboshop.log
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+sudo yum install nodejs -y &>>/tmp/roboshop.log
 node --version
 npm --version
 STAT $?
@@ -38,12 +39,12 @@ HEAD "Extract the downloaded code"
 cd /home/roboshop && rm -rf catalogue && unzip -o /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
 STAT $?
 
-HEAD "Install NPM module"
+HEAD "Install NPM module\t"
 #--unsafe-perm : switching sudo is complex in shell scripting hence this
 cd /home/roboshop/catalogue && npm install --unsafe-perm &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Fix app permissions"
+HEAD "Fix app permissions\t"
 #as we ran using sudo it will have root and its requires roboshop
 chown roboshop:roboshop /home/roboshop -R
 STAT $?
@@ -60,4 +61,9 @@ STAT $?
 HEAD "Start catalogue service"
 systemctl daemon-reload && systemctl enable catalogue &>>/tmp/roboshop.log && systemctl restart catalogue &>>/tmp/roboshop.log
 STAT $?
+
+#validation
+#cat /var/log/messages
+# catalogue: {"level":"info","time":1660569501911,"pid":2557,"hostname":"ip-172-31-11-127.ec2.internal","msg":"MongoDB connected","v":1}
+
 
