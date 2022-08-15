@@ -5,8 +5,12 @@ rm -rf /tmp/roboshop.log
 
 HEAD "Installing Nginx\t"
 #echo -n "Installing NGINX   ..."
-yum install nginx -y &>>/tmp/roboshop.log
+#yum install nginx -y &>>/tmp/roboshop.log
+curl –sL https://rpm.nodesource.com/setup_10.x | sudo bash - &>>/tmp/roboshop.log
+sudo yum install –y nodejs &>>/tmp/roboshop.log
 #failure checking
+node --version
+npm --version
 #yum install nginxx -y &>>/tmp/roboshop.log
 #Prints msg in date format
 #echo -e "[\e[1;34mINFO\e[0m] [\e[1;35m${COMPONENT}\e[0m] [\e[1;36m$(date '+%F %T')\e[0m] $1"
