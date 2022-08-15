@@ -19,7 +19,7 @@ So to run the catalogue service we choose to run as a normal user and that user 
 comment
 
 HEAD "Add roboshop user"
-useradd roboshop &>>/tmp/roboshop.log
+#useradd roboshop &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Download code from github"
