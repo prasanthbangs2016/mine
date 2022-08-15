@@ -54,5 +54,5 @@ sleep 30
 PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1)
 sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${PRIVATE_IP}/" r53-record.json &>>/tmp/r53-record.json
 aws route53 change-resource-record-sets --hosted-zone-id Z06449313GT2L31RWE1JO --change-batch file:///tmp/r53-record.json
-
-
+#validation
+#add route53 full permission to aws cli user in iam
