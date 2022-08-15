@@ -3,7 +3,7 @@ source components/common.sh
 rm -rf /tmp/roboshop.log
 
 HEAD "Installing Nodejs"
-yum install nodejs make gcc-c++ -y &>>/tmp/rboshop.log
+yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
 STAT $?
 
 <<comment
@@ -19,13 +19,13 @@ comment
 #STAT $?
 
 HEAD "Download code from github"
-curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>/tmp/rboshop.log
+curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Extract the downloaded code"
-cd /home/roboshop && unzip -o /tmp/catalogue.zip &>>/tmp/rboshop.log && mv catalogue-main catalogue
+cd /home/roboshop && unzip -o /tmp/catalogue.zip &>>/tmp/roboshop.log && mv catalogue-main catalogue
 STAT $?
 
 HEAD "Install NPM module"
-cd /home/roboshop/catalogue && npm install &>>/tmp/rboshop.log
+cd /home/roboshop/catalogue && npm install &>>/tmp/roboshop.log
 STAT $?
