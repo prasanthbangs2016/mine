@@ -28,13 +28,13 @@ echo -e "\e[32m\t\tValidating ${COMPONENT} instance is already there\e[0m"
 INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].State.Name | xargs -n1)
 
 if [ "${INSTANCE_STATE}" = "runnung" ]; then
-  echo "${COMPONENT} instance is already exist"
+  echo -e "\e[33m${COMPONENT} instance is already exist\e[0m"
   #as instance running exit
   exit 0
 fi
 
 if [ "${INSTANCE_STATE}" = "stopped" ]; then
-  echo "${COMPONENT} instance is already exist and stopped..! start the instance"
+  echo -e "\e[32m${COMPONENT} instance is already exist and stopped..! start the instance\e[0m"
   #as instance running exit
   exit 0
 fi
