@@ -3,7 +3,11 @@ source components/common.sh
 rm -rf /tmp/roboshop.log
 
 HEAD "Installing Nodejs"
-yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
+#yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
+curl –sL https://rpm.nodesource.com/setup_10.x | sudo bash - &>>/tmp/roboshop.log
+sudo yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
+node --version
+npm --version
 STAT $?
 
 <<comment
