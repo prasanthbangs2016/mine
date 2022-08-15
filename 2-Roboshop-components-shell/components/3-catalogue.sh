@@ -19,7 +19,13 @@ So to run the catalogue service we choose to run as a normal user and that user 
 comment
 
 HEAD "Add roboshop user"
-#useradd roboshop &>>/tmp/roboshop.log
+#checking roboshop user id is exit or no
+id roboshop &>>/tmp/roboshop.log
+if [ $? -eq 0 ]; then
+  echo "Roboshop user is already exist so skipping"  &>>/tmp/roboshop.log
+  STAT $?
+else
+  useradd roboshop &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Download code from github"
