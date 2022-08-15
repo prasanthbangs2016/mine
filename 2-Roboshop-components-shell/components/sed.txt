@@ -1,0 +1,78 @@
+substitute/replace
+delete
+append
+
+cp /etc/passwd .
+cat passwd
+
+substitute
+===========
+sed 's/root/ROOT/' password
+note: this wont replace it actual file,it just prints on screen.
+and,it just does for 1st occurance.
+
+global
+========
+sed 's/root/ROOT/g' password
+
+case sensitive
+==============
+sed -i -e's/root/ROOT/g' -e 's/network/NETWORK/ig' password
+
+i: it will update in file
+a: append
+
+
+Deletion
+#######
+sed -e '2 d' passwd
+note: deletes the 2nd line
+
+search a word and delete
+============================
+sed -e '/shutdonw/ d' passwd
+
+
+add my own content(append)
+===================
+append at 1st line
+sed -e '1 a Hello' passwd
+
+search a word and append
+wherever u find root append with Hello
+sed -e '/ROOT/ a Hello' passwd
+a: append here
+insert a line
+===============
+in actual line it inserts
+actual existing line becomes next line
+
+sed -e '/ROOT/ i Hello' passwd
+insert is inserts at actual line
+whereas append adds to the next line
+
+
+changes the line: wherever find change the line
+=================================
+existing will be deleted and it adds to new line
+
+sed -e '/ROOT/ c Hello' passwd
+
+
+Requirement
+=============
+#Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
+#Config file: /etc/mongod.conf
+#then restart the service
+# systemctl restart mongod
+
+
+
+
+
+
+
+
+
+
+
