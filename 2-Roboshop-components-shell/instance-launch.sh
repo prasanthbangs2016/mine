@@ -29,8 +29,8 @@ echo -e "\e[32m\t\tValidating ${COMPONENT} instance is already there\e[0m"
 
 DNS_UPDATE() {
 #find ip address to add record in rout53
-PRIVATE_IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1)
-sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${PRIVATE_IP}/" record.json >/tmp/record.json
+PRIVATEIP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1)
+sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${PRIVATEIP}/" record.json >/tmp/record.json
 aws route53 change-resource-record-sets --hosted-zone-id Z06386013LGCB19ECT5 --change-batch file:///tmp/record.json | jq
 #validation
 #add route53 full permission to aws cli user in iam
