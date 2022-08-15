@@ -33,9 +33,11 @@ HEAD "Download mongodb from github\t\t"
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Unzip mongodb files and Load schema files"
+HEAD "unzip mongofile\t\t\t"
 cd /tmp && unzip -o mongodb.zip &>>/tmp/rboshop.log 
 STAT $?
+
+HEAD "Load mongo schema files\t"
 cd mongodb-main
 mongo < catalogue.js &>>/tmp/rboshop.log mongo < users.js &>>/tmp/rboshop.log
 STAT $?
