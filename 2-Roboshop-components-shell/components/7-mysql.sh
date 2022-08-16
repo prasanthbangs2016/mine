@@ -25,7 +25,7 @@ HEAD "Changing mysql password"
 #if [ $? -ne 0 ]; then
 DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Roboshop@1';
-uninstall plugin validate_password;" >/tmp/db.sql
+uninstall plugin validate_password;" | mysql -uroot -p"${DEFAULT_PASSWORD}"
 STAT $?
 #fi
 
@@ -38,9 +38,9 @@ STAT $?
   #STAT $?
 #fi
 
-HEAD "Reset mysql password"
-mysql -uroot -p"${DEFAULT_PASSWORD}" &>>/tmp/roboshop.log
-STAT $?
+#HEAD "Reset mysql password"
+#mysql -uroot -p"${DEFAULT_PASSWORD}" &>>/tmp/roboshop.log
+#STAT $?
 
 HEAD "Downloading mysql files from repo and load schemas"
 curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>>/tmp/roboshop.log
