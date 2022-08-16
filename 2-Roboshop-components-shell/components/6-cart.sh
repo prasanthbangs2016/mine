@@ -3,6 +3,7 @@ source components/common.sh
 #removing log file for every time to have latest run log
 rm -rf /tmp/roboshop.log
 
+
 HEAD "Installing Nodejs"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/rboshop.log
 yum install nodejs -y &>>/tmp/rboshop.log
