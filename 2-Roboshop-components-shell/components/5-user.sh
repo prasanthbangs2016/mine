@@ -2,7 +2,7 @@
 source components/common.sh
 #removing log file for every time to have latest run log
 rm -rf /tmp/roboshop.log
-set-hostname user
+set-hostname -skip-apply user
 
 HEAD "Installing node"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/rboshop.log
