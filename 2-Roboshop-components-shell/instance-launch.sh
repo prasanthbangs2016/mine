@@ -1,5 +1,4 @@
 #!/bin/bash
-AWS_CONFIG_FILE="~/.aws/config"
 COMPONENT=$1
 
 #validating command line argument variable is provided or not
@@ -36,7 +35,6 @@ aws route53 change-resource-record-sets --hosted-zone-id Z06386013LGCB19ECT5 --c
 #validation
 #add route53 full permission to aws cli user in iam
 }
-
 INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].State.Name | xargs -n1)
 
 if [ "${INSTANCE_STATE}" = "runnung" ]; then
@@ -58,7 +56,7 @@ fi
 #since with single quotes we cannot access the variable hence double quotes
 #as output coming json format,whole output we're giving to "JQ" and that stops and takes us to cmdline
 echo -e "\e[31m\t\tOh,No ${COMPONENT} instance is not there creating the instance ${COMPONENT}\e[0m"
-aws ec2 run-instances --launch-template LaunchTemplateId=${LaunchTemplateId},Version=${Version} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" --profile default | jq
+aws ec2 run-instances --launch-template LaunchTemplateId=${LaunchTemplateId},Version=${Version} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" | jq
 #intentionally waiting as instance to be provisioned
 sleep 30
 DNS_UPDATE
