@@ -2,6 +2,7 @@
 source components/common.sh
 #removing log file for every time to have latest run log
 rm -rf /tmp/roboshop.log
+set-hostname frontend
 
 HEAD "Installing Nginx\t"
 #echo -n "Installing NGINX   ..."

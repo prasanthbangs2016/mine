@@ -1,6 +1,7 @@
 #!/bin/bash
 source components/common.sh
 rm -rf /tmp/roboshop.log
+set-hostname mongodb
 
 HEAD "Setup mongodb yum repo files\t"
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>/tmp/rboshop.log
