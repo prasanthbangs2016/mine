@@ -39,7 +39,7 @@ STAT $?
 HEAD "Update REDIS and Catalogue server in user"
 #sudo su -
 #cat /home/roboshop/catalogue/systemd.service
-sed -i -e 's/REDIS_ENDPOINT /dev-redis.roboshop.ppk/' /home/roboshop/cart/systemd.service &>>/tmp/roboshop.log
+sed -i -e 's/REDIS_ENDPOINT/dev-redis.roboshop.ppk/' /home/roboshop/cart/systemd.service &>>/tmp/roboshop.log
 sed -i -e 's/CATALOGUE_ENDPOINT/dev-catalogue.roboshop.ppk/' /home/roboshop/cart/systemd.service &>>/tmp/roboshop.log
 mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service
 STAT $?
