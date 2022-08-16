@@ -18,6 +18,7 @@ systemctl enable mysqld &>>/tmp/roboshop.log
 systemctl start mysqld &>>/tmp/roboshop.log
 STAT $?
 
+HEAD "Changing mysql password"
 #DEFAULT_PASSWORD=$(sudo grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
 #echo "show databases;" | mysql -uroot -p$MYSQL_PASSWORD &>>/tmp/roboshop.log
 #if above commnand password is wrong we're changing the password
