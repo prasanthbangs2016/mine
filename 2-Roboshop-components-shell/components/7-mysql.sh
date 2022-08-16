@@ -13,7 +13,7 @@ curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/robo
 yum install mysql-community-server -y &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "start mysql service"
+HEAD "start mysql service and reset password"
 systemctl enable mysqld &>>/tmp/roboshop.log
 systemctl start mysqld &>>/tmp/roboshop.log
 STAT $?
@@ -27,10 +27,14 @@ echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Roboshop@1';
 uninstall plugin validate_password;" >/tmp/db.sql
 
 #fi
-
-HEAD "Reset mysql password"
-mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/db.sql &>>/tmp/roboshop.log #</tmp/db.sql &>>/tmp/roboshop.log
-STAT $?
+echo "show databases;" | mysql -uroot -pRoboshop@1 &>>/tmp/roboshop.log
+if [ $? -ne 0 ]; then
+# if command is successful we are not changing the password
+    HEAD "Reset mysql password"
+    #--connect-expired-password :option is expected as default passwd expired for changing
+    mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/db.sql &>>/tmp/roboshop.log #</tmp/db.sql &>>/tmp/roboshop.log
+    STAT $?
+fi
 
 #HEAD "checking plugin is available or not if not available removing it"
 #echo "show plugins;" | mysql -uroot -p$MYSQL_PASSWORD 2>&1 | grep validate_password &>>/tmp/roboshop.log
