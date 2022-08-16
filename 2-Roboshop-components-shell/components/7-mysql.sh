@@ -30,7 +30,7 @@ STAT $?
 #fi
 
 HEAD "Reset mysql password"
-mysql -uroot -p"${DEFAULT_PASSWORD}" &>>/tmp/roboshop.log #</tmp/db.sql &>>/tmp/roboshop.log
+mysql -uroot -pRoboshop@1 &>>/tmp/roboshop.log #</tmp/db.sql &>>/tmp/roboshop.log
 STAT $?
 
 #HEAD "checking plugin is available or not if not available removing it"
