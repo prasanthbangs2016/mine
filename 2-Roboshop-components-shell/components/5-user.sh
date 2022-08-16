@@ -44,7 +44,7 @@ HEAD "Update mongodb server in user"
 #cat /home/roboshop/catalogue/systemd.service
 sed -i -e 's/MONGO_DNSNAME/dev-mongodb.roboshop.ppk/' /home/roboshop/user/systemd.service &>>/tmp/roboshop.log
 sed -i -e 's/MONGO_ENDPOINT/dev-redis.roboshop.ppk/' /home/roboshop/user/systemd.service &>>/tmp/roboshop.log
-mv /home/roboshop/user/systemd.service /etc/systemd/system/catalogue.service
+mv /home/roboshop/user/systemd.service /etc/systemd/system/user.service
 STAT $?
 
 HEAD "Starting systemD of user component"
