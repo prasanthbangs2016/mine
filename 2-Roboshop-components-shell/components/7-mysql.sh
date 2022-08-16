@@ -49,8 +49,11 @@ fi
 #mysql -uroot -p"${DEFAULT_PASSWORD}" &>>/tmp/roboshop.log
 #STAT $?
 
-HEAD "Downloading mysql files from repo and load schemas"
+HEAD "Downloading mysql files from repo"
 curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>>/tmp/roboshop.log
+STAT $?
+
+HEAD "load DB schemas"
 cd /tmp && unzip -o mysql.zip &>>/tmp/roboshop.log && cd mysql-main && mysql -u root -pRoboShop@1 <shipping.sql &>>/tmp/roboshop.log
 STAT $?
 
