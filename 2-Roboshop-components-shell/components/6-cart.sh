@@ -45,5 +45,5 @@ mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service
 STAT $?
 
 HEAD "Starting systemD of cart component"
-systemctl daemon-reload && systemctl enable user &>>/tmp/roboshop.log && systemctl restart cart &>>/tmp/roboshop.log
+systemctl daemon-reload && systemctl enable cart &>>/tmp/roboshop.log && systemctl restart cart &>>/tmp/roboshop.log
 STAT $?
