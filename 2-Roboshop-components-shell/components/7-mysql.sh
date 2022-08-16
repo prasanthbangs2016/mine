@@ -25,7 +25,7 @@ HEAD "Changing mysql password"
 #if [ $? -ne 0 ]; then
 DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'Roboshop@1';
-uninstall plugin validate_password;" | mysql -uroot -p"${DEFAULT_PASSWORD}"
+uninstall plugin validate_password; | mysql -uroot -p"${DEFAULT_PASSWORD}"
 STAT $?
 #fi
 
