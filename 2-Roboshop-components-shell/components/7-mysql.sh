@@ -54,7 +54,7 @@ curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/a
 STAT $?
 
 HEAD "load DB schemas"
-cd /tmp && unzip -o mysql.zip &>>/tmp/roboshop.log && cd mysql-main && mysql -uroot -pRoboShop@1 <shipping.sql &>>/tmp/roboshop.log
+cd /tmp && unzip -o mysql.zip &>>/tmp/roboshop.log && cd mysql-main && mysql -uroot -pRoboshop@1 <shipping.sql &>>/tmp/roboshop.log
 STAT $?
 
 
