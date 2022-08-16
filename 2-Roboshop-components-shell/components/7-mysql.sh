@@ -18,14 +18,13 @@ systemctl enable mysqld &>>/tmp/roboshop.log
 systemctl start mysqld &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "change mysql password"
 #DEFAULT_PASSWORD=$(sudo grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
 #echo "show databases;" | mysql -uroot -p$MYSQL_PASSWORD &>>/tmp/roboshop.log
 #if above commnand password is wrong we're changing the password
 #if [ $? -ne 0 ]; then
 DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
-echo "alter user 'root'@'localhost' IDENTIFIED BY'Roboshop@1';"
-uninstall plugin validate_password >/tmp/db.sql
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY'Roboshop@1';
+uninstall plugin validate_password;" >/tmp/db.sql
 STAT $?
 #fi
 
