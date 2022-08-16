@@ -14,7 +14,7 @@ fi
 
 
 LaunchTemplateId=lt-06e7a9930871b61ef
-Version=1
+Version=2
 
 echo -e "\e[32m\t\tValidating ${COMPONENT} instance is already there\e[0m"
 #filter the instance by tag
