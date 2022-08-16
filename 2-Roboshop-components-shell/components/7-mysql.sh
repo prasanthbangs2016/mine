@@ -30,7 +30,7 @@ uninstall plugin validate_password;" >/tmp/db.sql
 #fi
 
 HEAD "Reset mysql password"
-mysql -uroot -p"${DEFAULT_PASSWORD}" </tmp/db.sql &>>/tmp/roboshop.log #</tmp/db.sql &>>/tmp/roboshop.log
+mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/db.sql &>>/tmp/roboshop.log #</tmp/db.sql &>>/tmp/roboshop.log
 STAT $?
 
 #HEAD "checking plugin is available or not if not available removing it"
