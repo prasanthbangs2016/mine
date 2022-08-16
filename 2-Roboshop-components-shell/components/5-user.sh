@@ -39,12 +39,12 @@ HEAD "Fix app permissions\t"
 chown roboshop:roboshop /home/roboshop -R
 STAT $?
 
-HEAD "Update mongodb server in catalogue"
+HEAD "Update mongodb server in user"
 #sudo su -
 #cat /home/roboshop/catalogue/systemd.service
-sed -i -e 's/MONGO_DNSNAME/dev-mongodb.roboshop.ppk/' /home/roboshop/catalogue/systemd.service &>>/tmp/roboshop.log
-sed -i -e 's/MONGO_ENDPOINT/dev-redis.roboshop.ppk/' /home/roboshop/catalogue/systemd.service &>>/tmp/roboshop.log
-mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+sed -i -e 's/MONGO_DNSNAME/dev-mongodb.roboshop.ppk/' /home/roboshop/user/systemd.service &>>/tmp/roboshop.log
+sed -i -e 's/MONGO_ENDPOINT/dev-redis.roboshop.ppk/' /home/roboshop/user/systemd.service &>>/tmp/roboshop.log
+mv /home/roboshop/user/systemd.service /etc/systemd/system/catalogue.service
 STAT $?
 
 HEAD "Starting systemD of user"
