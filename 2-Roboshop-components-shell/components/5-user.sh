@@ -48,5 +48,6 @@ mv /home/roboshop/user/systemd.service /etc/systemd/system/catalogue.service
 STAT $?
 
 HEAD "Starting systemD of user component"
-systemctl enable user && systemctl daemon-reload &>>/tmp/roboshop.log && systemctl restart user &>>/tmp/roboshop.log
+systemctl daemon-reload &>>/tmp/roboshop.log && systemctl restart user &>>/tmp/roboshop.log
+systemctl enable user
 STAT $?
