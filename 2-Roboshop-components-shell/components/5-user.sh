@@ -11,7 +11,7 @@ yum install nodejs -y &>>/tmp/rboshop.log
 STAT $?
 
 HEAD "Add roboshop user"
-#checking roboshop user id is exit or no
+#checking roboshop user id is exist or no
 id roboshop &>>/tmp/roboshop.log
 if [ $? -eq 0 ]; then
   echo "Roboshop user is already exist so skipping"  &>>/tmp/roboshop.log

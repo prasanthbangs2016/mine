@@ -61,6 +61,14 @@ can we able to switch to root user using scripting?
 yes but it is complex   
 su - <username> -c <commands>
 
+how do u call other shellscript into another shell script
+If you have another file in same directory, you can either do:
+
+source 1.sh
+bash 1.sh
+or
+. 1.sh
+
 
 
 

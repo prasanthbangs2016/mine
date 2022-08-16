@@ -13,7 +13,7 @@ fi
 #o/p: Component name is needed
 
 
-LaunchTemplateId=lt-0b86176ba30da7a45
+LaunchTemplateId=lt-06e7a9930871b61ef
 Version=1
 
 echo -e "\e[32m\t\tValidating ${COMPONENT} instance is already there\e[0m"
