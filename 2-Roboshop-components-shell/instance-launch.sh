@@ -13,8 +13,8 @@ fi
 #o/p: Component name is needed
 
 
-LaunchTemplateId=lt-06e7a9930871b61ef
-Version=4
+LaunchTemplateId=lt-0b86176ba30da7a45
+Version=1
 
 echo -e "\e[32m\t\tValidating ${COMPONENT} instance is already there\e[0m"
 #filter the instance by tag
