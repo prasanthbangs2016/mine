@@ -6,8 +6,16 @@ rm -rf /tmp/roboshop.log
 
 
 HEAD "Download Erlang"
-yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm -y &>>/tmp/roboshop.log
-STAT $?
+#yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm -y &>>/tmp/roboshop.log
+#if package is already installed it will fail with yum hence checking pkg installed or no then installing
+yum list installed | grep erlang
+if [ $? -eq 0 ]; then
+  echo "Erlang is already exist so skipping"  &>>/tmp/roboshop.log
+  STAT $?
+else
+  yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm -y &>>/tmp/roboshop.logyum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm -y &>>/tmp/roboshop.log
+  STAT $?
+fi
 
 HEAD "Set up rabbitmq yum repo "
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>/tmp/roboshop.log
