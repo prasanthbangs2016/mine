@@ -51,3 +51,4 @@ STAT $?
 
 HEAD "Start shipping Systemd"
 systemctl daemon-reload && systemctl enable shipping &>>/tmp/roboshop.log && systemctl start shipping &>>/tmp/roboshop.log
+STAT $?
