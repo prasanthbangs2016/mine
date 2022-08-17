@@ -1,0 +1,5 @@
+
+   20  sudo systemctl reload nginx
+   21  sudo systemctl restart nginx
+   22  sudo cat /var/log/messages
+   23  sudo vi /etc/nginx/default.d/roboshop.conf
