@@ -56,8 +56,3 @@ STAT $?
 HEAD "Start Payment systemd"
 systemctl daemon-reload && systemctl enable payment &>>/tmp/roboshop.log && systemctl start payment &>>/tmp/roboshop.log
 STAT $?
-
-
-
-
-

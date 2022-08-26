@@ -69,6 +69,12 @@ bash 1.sh
 or
 . 1.sh
 
+when do u use semicolon(;) and double ampresend(&&)
+semicolon: when there is no relation between the commands
+if 1st command fails it will execute 2nd commands.
+ampresend: when there is relation between the commands
+only if 1st command is executed it will go to 2nd command
+
 
 
 

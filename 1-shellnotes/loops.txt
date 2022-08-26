@@ -1,0 +1,68 @@
+loops
+======
+fundamentally there are 2 loops 1-while 2-for loop
+inverse the logic of those 2 loops we have another two more loops 3-until 4-select
+
+while: 
+=====
+while loops work like if condition
+syntax:
+======
+while [ expression ]; do
+commands
+done
+
+note: if the expressions is true it will execute the commands.
+
+examples
+===========
+i=10
+while [ $i -lt 0 ]; do
+#if 10 is >0 then execute command
+  echo $i
+  i=$(($i-1))
+done
+
+o/p:
+---
+10
+9
+8
+.
+.
+.
+1
+
+
+for loop: depending on value
+---------
+syntax:
+=-----
+for fruit in apple banana orange ; do
+  echo Fruit name = $fruit
+  sleep 1
+done
+
+o/p:
+===
+fruit name = apple
+fruit name = banana
+fruit name = orange
+
+
+Note: Keep this below script in workstation machine
+=====================================================
+
+for Component in fronten mongodb catalogue redis user mysql shipping rabbitmq payment ; do
+  ssh $Component.roboshop.ppk "git clone https://github.com/prasanthbangs2016/mine.git"; cd mine/2-Roboshop-components-shell/sudo make $Component"
+done
+
+for comp in frontend mongodb catalogue redis user mysql shipping rabbitmq payment ; do
+#search for loop comp varaible and search for localhost and replace it with loop variable comp
+  sed -i -e "/${comp}/ s/localhost/${comp}.roboshop.ppk" /etc/nginx/default.d/roboshop.conf
+done
+
+
+
+
+

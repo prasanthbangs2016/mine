@@ -35,6 +35,13 @@ HEAD "Update Nginx configuration"
 mv /usr/share/nginx/html/localhost.conf /etc/nginx/default.d/roboshop.conf
 STAT $?
 
+HEAD "update endpoints in nginx conf"
+for comp in frontend mongodb catalogue redis user mysql shipping rabbitmq payment ; do
+#search for loop comp varaible and search for localhost and replace it with loop variable comp
+  sed -i -e "/${comp}/ s/localhost/${comp}.roboshop.ppk" /etc/nginx/default.d/roboshop.conf
+done
+STAT $?
+
 #HEAD "Start nginx"
 HEAD "Start nginx\t\t"
 systemctl enable nginx &>>/tmp/roboshop.log
