@@ -27,3 +27,5 @@
        - {key: "mutable.user.dev.MONGO", value: "true"}
        - {key: "mutable.user.dev.REDIS_HOST", value: "redis-dev.roboshop.ppk"}
        - {key: "mutable.user.dev.MONGO_URL", value: "mongodb://mongodb-dev.roboshop.ppk:27017/users"}
+
+  # ansible-playbook create-ssm-parms.yml
