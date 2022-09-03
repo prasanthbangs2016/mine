@@ -15,7 +15,7 @@ create_ec2() {
       --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}, {Key=Monitor,Value=yes}]" \
       --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}"\
       --security-group-ids ${SGID} \
-	    --iam-instance-profile Name=Secretmanager-readonly-access-for-roboshop-nodes \
+	    #--iam-instance-profile Name=Secretmanager-readonly-access-for-roboshop-nodes \
       | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 
   sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" record.json >/tmp/record.json
